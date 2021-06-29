@@ -1,0 +1,23 @@
+{
+  "name": "zenn",
+  "version": "1.0.0",
+  "description": "Zenn Docs",
+  "main": "articles/",
+  "scripts": {
+    "zenn": "zenn"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/75asa/Zenn.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/75asa/Zenn/issues"
+  },
+  "homepage": "https://github.com/75asa/Zenn#readme",
+  "dependencies": {
+    "zenn-cli": "^0.1.89"
+  }
+}
