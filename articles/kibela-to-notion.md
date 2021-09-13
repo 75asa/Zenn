@@ -2,7 +2,7 @@
 title: "Kibela から Notion に約2万+件の記事を移行するために移行ツールを作った"
 emoji: "😊"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: []
+topics: ["Notion", "NotionAPI", "Kibela"]
 published: false
 ---
 
