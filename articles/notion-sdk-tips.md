@@ -10,7 +10,6 @@ published: false
 
 ![](https://i.gyazo.com/c1cafd90401813804350f69e8799c224.png)
 
-
 - body.filter.property にフィルタリングしたい _DB プロパティ名_ を指定
 - 上記の項目のタイプによって 型 を指定
   - Text
