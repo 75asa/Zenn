@@ -1,7 +1,7 @@
 ---
 title: "Salesforce Certified JavaScript Developer 試験を合格するまでにやったことまとめ"
-emoji: "😈"
+emoji: "🖌"
 type: "tech"
-topics: ["JavaScript", "Salesforce, "Certified Developer"]
+topics: ["JavaScript", "Salesforce", "Certified"]
 published: false
 ---
