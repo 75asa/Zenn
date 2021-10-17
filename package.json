@@ -4,7 +4,6 @@
   "description": "Zenn Docs",
   "main": "./README.md",
   "scripts": {
-    "zenn": "zenn",
     "article": "zenn new:article",
     "book": "zenn new:book",
     "preview": "zenn preview",
