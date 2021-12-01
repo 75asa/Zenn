@@ -10,7 +10,7 @@ published: false
 
 ## TL;DL;
 
-- Cognito だけを先に作る(既存の Cognito から設定したほうが GUI なので便利)
+- Cognito だけを先に作る（既存の Cognito から設定したほうが GUI なので便利）
 - `$ amplify remove auth` で現 Amplify env の Cognito を削除する
 - `$ amplify import auth` で初めに作った Cognito を紐付ける
 
