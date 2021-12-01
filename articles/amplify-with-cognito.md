@@ -10,7 +10,7 @@ published: false
 
 ## TL;DL;
 
-- Cognito だけを先に作る(既存の Cognito から設定したほうが GUI なので便利)
+- Cognito だけを先に作る（既存の Cognito から設定したほうが GUI なので便利）
 - `$ amplify remove auth` で現 Amplify env の Cognito を削除する
 - `$ amplify import auth` で初めに作った Cognito を紐付ける
 
@@ -29,7 +29,7 @@ published: false
 - 注意点としては、Cognito のユーザ名方針（ユーザネームかアドレスや電話番号どれを使うか）を間違えると作り直すしかなくなる
 - 再度作り直したい際は、一度 `$ amplify remove auth` をする
   - この時 Cognito に依存するサービス e.g. API, Function がある場合、あらかじめ依存性を削除するかサービス自体を削除しないといけない
-  - 削除するとローカルのディレクトリと template json がごっそりなくなるので、一時的に CognitoUserPool を切り替えたいだけとう時は、依存性の削除だけをおすすめする
+  - 削除するとローカルのディレクトリと template json がごっそりなくなるので、一時的に CognitoUserPool を切り替えたいだけとうときは、依存性の削除だけをおすすめする
 
 ### 既存の Cognito を使う場合
 
