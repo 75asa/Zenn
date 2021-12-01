@@ -9,7 +9,7 @@
     "preview": "zenn preview",
     "list:article": "zenn list:article",
     "list:book": "zenn list:book",
-    "lint": "textlint"
+    "lint": "textlint ."
   },
   "repository": {
     "type": "git",
