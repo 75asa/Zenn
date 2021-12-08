@@ -2,7 +2,7 @@
 title: "Block Kit でゲシュタルト崩壊しないために JSX でブロックを記述する"
 emoji: "🙌"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["Slack", "Block Kit", "JSX", "React", "TypeScript"]
+topics: ["Slack", "BlockKit", "JSX", "React", "TypeScript"]
 published: false
 ---
 
@@ -11,14 +11,16 @@ published: false
 SlackApp（bot）開発で利用できるリッチなビューレイアウトです
 旧来は Attachments という複雑に入り組んだ JSON を組み合わせて Slack 投稿のレイアウトを表現していましたが、数年前に Attachments よりも直感的でシンプルに見た目をリッチに表現できる Block Kit が発表されました。
 現在、Slack Official では Attachments は非推奨となり Block Kit をなるだけ利用するように開発者に促しています。
-また Block Kit は Block Kit Builder という GUI で利用できるレイアウトビュアーを提供しています。こちらはドラッグ&ドロップでブロックのレイアウトを調整でき、同期で Block Kit の JSON も生成されます。
-実装前に見た目をざっくり構成したかったり、色々な Block を使って遊んでみたい場合はとても便利なのでぜひ利用してみてください（FYI: [Block Kit Builder を使ってインタラクティブな Slack アプリをプロトタイピングしよう](https://qiita.com/seratch/items/628751be65de9eb23a80)）。
+また Block Kit は Block Kit Builder という GUI で利用できるレイアウトビュアーを提供しています。こちらはドラッグ&ドロップでブロックのレイアウトを調整でき、即時同期的に Block Kit の JSON も生成されます。
+実装前に見た目をざっくり構成したかったり、色々な Block を使って遊んでみたい場合はとても便利なのでぜひ利用してみてください
+
+FYI: [Block Kit Builder を使ってインタラクティブな Slack アプリをプロトタイピングしよう](https://qiita.com/seratch/items/628751be65de9eb23a80)
 
 # 辛いことろ
 
 上記のような背景から SlackApp 開発ではよく Block Kit を使用しています。
 しかし、エンドユーザとモーダルやフォームなどを介して対話的な SlackApp などを作る場合、ビューレイヤーの記述量がかなり冗長となります。
-その際に、Block Kit の各タイプ別に似たような JSON の記述量が増えゲシュタルト崩壊が起こることが多々見受けられます。
+その際に、Block Kit の各タイプ別に似たような JSON の記述量が増え流ため、ゲシュタルト崩壊を起こすことが多々見受けられます。
 Node.js を利用している場合は、オフィシャルで bolt.js という SDK が配布されており型情報は提供されていますが、それでも JSON の限界を個人的に感じています。
 
 # jsx-slack とは
