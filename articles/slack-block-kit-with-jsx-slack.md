@@ -229,7 +229,7 @@ export const MultiSelectProperty = ({
 
 # まとめ
 
-JSON で冗長な Block Kit に辟易しているほうはぜひお試しを！
+_JSON で冗長な Block Kit に辟易している方ははぜひお試しを！_
 
 # FYI
 
