@@ -6,6 +6,9 @@ topics: ["Slack", "BlockKit", "JSX", "React", "TypeScript"]
 published: true
 ---
 
+この記事は [Slack Advent Calendar 2021](https://qiita.com/advent-calendar/2021/slack) 12/8 のエントリーです。
+最近 SlackApp を開発した際に便利だった jsx-slack のお話です。
+
 # [Slack Block Kit](https://api.slack.com/block-kit) とは
 
 SlackApp（bot）開発で利用できるリッチなビューレイアウトです
