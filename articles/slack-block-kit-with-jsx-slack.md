@@ -3,7 +3,7 @@ title: "Block Kit でゲシュタルト崩壊しないために JSX でブロッ
 emoji: "🙌"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Slack", "BlockKit", "JSX", "React", "TypeScript"]
-published: false
+published: true
 ---
 
 # [Slack Block Kit](https://api.slack.com/block-kit) とは
