@@ -23,7 +23,7 @@ Dropbox Paper は初めは良かったのだが、文字数が多くなるとペ
 実際に利用してみてまず感じたことは、文章としての書きごこちは圧倒的に Kibela や Dropbox Paper に軍杯があがった。
 これは、Notion がブロックという設計概念に沿って文章をユーザに書かせるためである。
 しかしその反面、Notion の方が自由度が高く記事を書いた後の管理や、Notion だけで ToDo を管理したり、タイムラインを作ったりと完結できる機会が増えていった。
-徐々に社員の民意が流れていき、ナレッジも Kibela ではなく Notion で良いじゃないという雰囲気になっていった。（要出典）。
+徐々に社員の民意が流れていき、ナレッジも Kibela ではなく Notion で良いじゃないという雰囲気になっていった（要出典）。
 そのためにはまず既存のナレッジ記事を Notion に引っ越しをしなければならず、オーナー権限をもらい記事の一括エクスポートから Notion にインポートをすることにした
 今回は Kibela から Notion と割とニッチな領域ではあるが、記事の移行の際にエンカウンタした数々の困りごとや実装の詳細等を備忘録として残しておく
 
@@ -170,8 +170,8 @@ key-value の形式としては `${属性名:値}:${Notion の選択肢 ID}` と
 がプロダクト作成時には画像のアップロード機能が API として提供されていなかった。
 そのためストレージ先として S3 や Google Drive を使用しようと考えた。
 
-先ず着手したのはストレージ先として S3 を使う方法である。
-S3 の公開バケットに画像をアップロードし、Amazon ACL でファイル自体の URL を知らなければファイルに到達できないようにし、ファイル ID 自体は UUID v4 で生成されたランダムな ID で管理すれば良いのでは？と考えた。
+まず着手したのはストレージ先として S3 を使う方法である。
+S3 の公開バケットに画像をアップロードし、Amazon ACL でファイル自体の URL を知らなければファイルに到達できないようにし、ファイル ID 自体は UUID v4 で生成されたランダムな ID で管理すれば良いのでは？　と考えた。
 これにより Gyazo や GitHub にアップロードした画像のレベルでのセキュリティは担保されると考えたのである。
 
 ACL Bucket Policy は以下のようにした
@@ -195,7 +195,7 @@ ACL Bucket Policy は以下のようにした
 
 ![Bucket Setting](https://i.gyazo.com/7c6db8432b227bc941919153e02ac617.png)
 
-これにより以下のようなフォルダ構成になり、エンドユーザ側からはファイル単体の URL を知らないとアクセスできないようにした。
+これにより以下のようなフォルダ構成になり、エンドユーザ側からはファイル単体の URL を使うべきではない言葉なので修正してくださいとアクセスできないようにした。
 また kibela-to-notion/0 を URL で指定してもバケット設定でアクセスを許可していない。
 
 ```
@@ -237,10 +237,35 @@ ACL Bucket Policy は以下のようにした
 置き換えたファイルはオリジナルのものとは区別したいため out/ に出力することにした。
 
 後は Notion に手動インポートをすれば、S3 URL は外部 URL として認識されるため文中でも参照されるという訳だ。
+これでめでたしとなるはずだった。
+しかしそうは問屋が卸さない。そうセキュリティ上の懸念があるのだ。
 
 ### セキュリティ上の懸念
 
-プロトタイプを実装し社内の技術顧問と相談したのだが、やはりセキュリテ
+プロトタイプを実装し社内の技術顧問と相談した際に、いくら推測されにくい URL にしても今後 n 年と運用していく際に何もインシデントが起こらない保証はないし、それに関して自分がどこまで責任をとれるか。というごもっともな理由で諭された。
+これが例えばサークルやコミュニティの Wiki であれば比較的許されるかもしれないが、案件情報やエンドユーザが外部に公開されると思ってアップロードしたファイルではないため、そういった面で軽率であった。
+個人的には、実装初期の方では GitHub や Gyazo も同様のファイル管理をしているじゃあないかと思ったのだが、GitHub は公式に注意勧告をしている。
+Gyazo はサービスの性質上、それでも気軽に URL で何かを共有したいといったユースケースに特化しているため、比較対象にはそぐわない。
+
+> Warning: If you add an image or video to a pull request or issue comment, anyone can view the anonymized URL without authentication, even if the pull request is in a private repository. To keep sensitive media files private, serve them from a private network or server that requires authentication. For more information on anonymized URLs see "About anonymized URLs".
+
+FYI: [Attaching files: You can convey information by attaching a variety of file types to your issues and pull requests.](https://docs.github.com/ja/github/writing-on-github/working-with-advanced-formatting/attaching-files)
+
+このような背景からセキュリティ要件の高いファイルを安全に参照できるようにストレージ先に GoogleDrive を選択できるように実装することにした。
+
+実装としては I/F を挟み、S3 or GoogleDrive のリポジトリを選択できるようにしたので、各々のユースケースに合わせることができる。
+Drive 側の手順としては、GCP のサービスアカウントを作成し、任意の Google Drive フォルダにサービスアカウントを招待する。
+後はローカルでプログラムを走らせ、ファイルをアップロードし、アップロードに成功した場合 URL をファイル名と紐付けて保存と S3 と同じである。
+
+この場合、Notion の文中ではインライン表示はできないが URL ジャンプで該当のファイル自体にはアクセスできる。
+ここで例えば社内のメンバーだけと限定することができるのでセキュリティ上の懸念は払拭できる。
+
+また、執筆時点（2021/12/17）ではまだ Notion API が以下の機能を提供していないため、現状文中でのインライン表示は難しい。
+
+- md ファイルでインポートした文中の Image Block の取得
+- Google Drive Embed Block
+
+今後のアップデートに期待したいところである。
 
 # Notion API [beta] の辛いところ
 
