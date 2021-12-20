@@ -320,7 +320,11 @@ Drive 側の手順としては、GCP のサービスアカウントを作成し�
 [Promise.all で同時に実行される数を制限したい](https://zenn.dev/tsugitta/articles/concurrency-lock)
 
 まさにやりたかったこと実装のスニペットでした。
-@tsugitta さんに感謝しつつ少しリファクタしたものを実装しました。
+[@tsugitta](https://zenn.dev/tsugitta) さんに感謝しつつ少しリファクタしたものを実装しました。
+
+Notion API のリクエスト制限は [CatNose](https://zenn.dev/catnose99) さんのこちらの記事もおすすめです
+
+[Notion API の Limit（リクエスト制限）で気になったことまとめ](https://zenn.dev/catnose99/articles/ab3afcb4338cbe)
 
 ## md ファイルから手動でのインポートする際のあれこれ
 
