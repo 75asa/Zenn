@@ -23,11 +23,11 @@
   },
   "homepage": "https://github.com/75asa/Zenn#readme",
   "dependencies": {
-    "zenn-cli": "^0.1.89"
+    "zenn-cli": "^0.1.100"
   },
   "devDependencies": {
-    "husky": "^5.0.0-alpha.6",
     "@textlint-ja/textlint-rule-no-insert-dropping-sa": "^1.0.1",
+    "husky": "^5.0.0-alpha.6",
     "md-to-pdf": "^3.1.1",
     "textlint": "^11.6.3",
     "textlint-filter-rule-comments": "^1.2.2",
