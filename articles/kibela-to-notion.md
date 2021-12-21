@@ -1,9 +1,9 @@
 ---
-title: "Kibela から Notion に約2万+件の記事を移行するために移行ツールを作った"
+title: "Kibela から Notion に約2万+件の記事を移行するために移行ツールを作った話"
 emoji: "🦁"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Notion", "NotionAPI", "Kibela", "TypeScript", "Node"]
-published: false
+published: true
 ---
 
 # はじめに
@@ -389,7 +389,7 @@ Kibela は他のマークダウンと同様に HTML をサポートしていま�
 
 リポジトリはこちらです
 
-[75asa/kibela-to-notion](https://github.com/75asa/kibela-to-notion)
+https://github.com/75asa/kibela-to-notion
 
 制作期間としては 僕一人で 7 月の終わりから実装着手し、10 月の頭に GA したので 2.5 ヶ月ほどでしょうか
 GitHub の Commit-アクティビティ を振り返ると最初ガッツリコミットしてプロトを作成し、その後 FB でちょこちょとリファクタした感じを思い出しました。
