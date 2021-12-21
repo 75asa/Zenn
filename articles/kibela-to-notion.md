@@ -28,7 +28,8 @@ Dropbox Paper 導入初期の反応はおおむね良く、純粋なテキスト
 - ナレッジの蓄積場所は変わらず Kibela が優位に立っていたため、Dropbox Paper で書いた記事を Kibela にインポートする手間が発生していた
 
 そんなときに Notion の噂を聞きつけました。
-気になってみて調べてみると Dropbox Paper と同じような同時編集機能があり、またゲスト機能も無料で搭載されている。また価格も割とリーズナブルで、 Trello やスプレッドシートのような使い方も出来るということです。豊富な機能に惹かれチームの一部で導入してみることにしました。
+気になってみて調べてみると Dropbox Paper と同じような同時編集機能があり、またゲスト機能も無料で搭載されている。
+また価格も割とリーズナブルで、 Trello やスプレッドシートのような使い方も出来るということです。豊富な機能に惹かれチームの一部で導入してみることにしました。
 実際に利用してみてまず感じたことは、文章としての書きごこちは圧倒的に Kibela や Dropbox Paper に軍杯があがるのですが、コンテンツを自由に柔軟に組み合わせたりカスタマイズできる点が非常に魅力的で運用しやすそうということです。
 
 チームでの好評から全社的にもスケールし、まずは社内のポータルをこれまで運用してきた Google Site から Notion に移行しました。
@@ -97,14 +98,14 @@ comments: []
 
 ## 誰が書いたかやグループやフォルダなどの情報が記事からわからない
 
-上記のような YAML ヘッダーがあるのですが、Notion のインポート方法ではマークダウンファイルからのインポートとなる。
+上記のような YAML ヘッダーがあるのですが、Notion のインポート方法ではマークダウンファイルからのインポートとなります。
 その際に、せっかく丁寧にエクスポートされた YAML ヘッダーの情報が全て消えてしまいます。
 これはまあそうで、ページとしてインポートするとプロパティなどは元より存在しないからなのです。
 （データベースのページとしてなら可能なのですが。..）
 
 ## 画像が Notion ページ内で参照できない
 
-また記事内で参照している画像も相対パスのため、インポートした際にリンク切れという形になってしまうのである。
+記事内で参照している画像が相対パスのため、インポートした際にリンク切れという形になってしまう問題がありました。
 
 e.g. `<img src="../attachments/10.png">`
 
@@ -112,7 +113,7 @@ e.g. `<img src="../attachments/10.png">`
 
 # さあ、どうしよう
 
-ここで今のままで主に困っている点を列挙してみることにしました。
+ここで、今のままで主に困っている点を列挙してみることにしました。
 
 - 誰が書いたか等の YAML ヘッダーの属性情報を Notion でも再現したい
 - 文中で参照している画像をなんとか表示したい
@@ -145,7 +146,7 @@ Kibela の現在（2021/12/17）時点での属性は以下の通りです。
 - comments
 
 そしてこの属性を Notion のプロパティで表現すると以下の通りのデータタイプとなります。
-Notion のデータタイプ表記は API Reference の [Property Object](https://developers.notion.com/reference/database#property-object) より
+Notion のデータタイプ表記は API Reference の [Property Object](https://developers.notion.com/reference/database#property-object) より。
 
 - author: `select`
 - contributors: `multi_select`
@@ -155,7 +156,7 @@ Notion のデータタイプ表記は API Reference の [Property Object](https:
 - updated_at: `date`
 - comments: `text`
 
-コメントはできれば Notion のコメントにあてがいたかったのだが、現時点（2021/12/17）ではまだ API が提供されておらず断念しました。
+コメントはできれば Notion のコメントにあてがいたかったのですが、現時点（2021/12/17）ではまだ API が提供されておらず断念しました。
 
 このようにあらかじめデータベースにプロパティを設定しておくことで、あとはローカルの md ファイルから YAML ヘッダーを読み取り、Notion のデータベースに存在する同じ ID のページのプロパティを更新することで機能実現はできそうです。
 
@@ -163,10 +164,10 @@ Notion のデータタイプ表記は API Reference の [Property Object](https:
 
 ### `select` `multi_select` の場合選択肢に同じ名前が存在していても同一とみなされない
 
-これは内部では ID が採番され、Notion 内部の処理では ID 管理されているためであす。
-そのため、ローカルの 1-hoge.md と 2-piyo.md にて YAML ヘッダーに `@author: @asato` と記載があるとする。
-このまま Notion のプロパティを更新すると author プロパティの選択肢に `@asato`, `@asato` と複数の選択肢が生成されてしまう。
-ID で管理・指定すれば良いのだが今回のユースケースではローカルに大量の選択肢が値として存在するため、相応しくない。
+これは内部では ID が採番され、Notion 内部の処理では ID 管理されているためです。
+そのため、ローカルの 1-hoge.md と 2-piyo.md にて YAML ヘッダーに `@author: @asato` と記載があるとします。
+このまま Notion のプロパティを更新すると author プロパティの選択肢に `@asato`, `@asato` と複数の選択肢が生成されてしまいます。
+ID で管理・指定すれば良いのですが、今回のユースケースではローカルに大量の選択肢が値として存在するため相応しくありません。
 
 ### Redis の導入
 
@@ -175,19 +176,19 @@ ID で管理・指定すれば良いのだが今回のユースケースでは�
 シナリオとしては以下の通りです。
 
 1. YAML ヘッダーをパースし各属性値を読み込む
-2. Redis に属性値があるか確認
-3. あれば ID として Notion をアップデート
-4. なければ値として Notion にアップサートし戻り値の ID を Redis に記録
+2. Redis に属性値があるか確認する
+3. あれば ID として Notion をアップデートする
+4. なければ値として Notion にアップサートし戻り値の ID を Redis に記録する
 
 key-value の形式としては `${属性名:値}:${Notion の選択肢 ID}` としました。
 このようにすることで YAML ヘッダー問題も解消出来ました。
 
 ## 画像の参照問題
 
-次は文中で参照してる画像問題です。
-理想としては文中でインライン表示されていて欲しい。
-ですがプロダクト作成時には画像のアップロード機能が API として提供されておらず代案を考えることに。
-ストレージ先として S3 や Google Drive を使用しようと至りました。
+さて、次は文中で参照してる画像問題です。
+理想としては文中でインライン表示されていて欲しいところですね。
+ですがプロダクト作成時には画像のアップロード機能が API として提供されておらず代案を考えることになります。
+そこで、今回はストレージ先として S3 や Google Drive を使用しようと至りました。
 
 まず着手したのはストレージ先として S3 を使う方法です。
 S3 の公開バケットに画像をアップロードし、Amazon ACL でファイル自体の URL を知らなければファイルに到達できないようにし、ファイル ID 自体は UUID v4 で生成されたランダムな ID で管理すれば良いのでは？　と考えました。
@@ -214,8 +215,8 @@ ACL Bucket Policy は以下のようにしました。
 
 ![Bucket Setting](https://i.gyazo.com/7c6db8432b227bc941919153e02ac617.png)
 
-これにより以下のようなフォルダ構成になり、エンドユーザ側からはファイル単体の URL をアクセスできないようにした。
-また kibela-to-notion/0 を URL で指定してもバケット設定でアクセスを許可していない。
+これにより以下のようなフォルダ構成になり、エンドユーザ側からはファイル単体の URL をアクセスできないようにしました。
+また kibela-to-notion/0 を URL で指定してもバケット設定でアクセスを許可していないため配下のファイルやフォルダが列挙されることはありません。
 
 ```
  kibela-to-notion/
@@ -251,26 +252,29 @@ ACL Bucket Policy は以下のようにしました。
 オリジナルの文中では Kibela のサーバサイドで採番されたファイル名をしようしています。
 そのため、一括でファイルを先にアップロードし、ローカルの Redis で元のファイル名（e.g. 43.png）とアップロード後の S3 URL を KVS に記録しておくことにしました。
 
-さていよいよ機は熟しました。
+***さていよいよ機は熟しました。***
 
 後は、全ての md ファイルをチャンクし、各行ごとに `<img * src='../attachments/{n}.*' >` の形式で RegExp を書き人したものを置き換えます。
 置き換えたファイルはオリジナルのものとは区別したいため out/ に出力することにしました。
 
-後は Notion に手動インポートをすれば、S3 URL は外部 URL として認識されるため文中でも参照されるという訳です。
+そして Notion に手動インポートをすれば、S3 URL は外部 URL として認識されるため文中でも参照されるという訳です。
+
 これでめでたしとなるはずでした。..
 しかしそうは問屋が卸さない。そうセキュリティ上の懸念にエンカウンタしました。
 
 ### セキュリティ上の懸念
 
 プロトタイプを実装し社内の技術顧問と相談した際に、いくら推測されにくい URL にしても今後 n 年と運用していく際に何もインシデントが起こらない保証はないし、それに関して自分がどこまで責任をとれるか。というごもっともな理由で諭されました。
+
 これが例えばサークルやコミュニティの Wiki であれば比較的許されるかもしれないですが、案件情報やエンドユーザが外部に公開されると思ってアップロードしたファイルではないため、そういった面で軽率でした。
+
 個人的には、実装初期の方では GitHub や Gyazo も同様のファイル管理をしているじゃあないかと思ったのですが、GitHub は公式に注意勧告をしています。
 
 > Warning: If you add an image or video to a pull request or issue comment, anyone can view the anonymized URL without authentication, even if the pull request is in a private repository. To keep sensitive media files private, serve them from a private network or server that requires authentication. For more information on anonymized URLs see "About anonymized URLs".
 
 FYI: [Attaching files: You can convey information by attaching a variety of file types to your issues and pull requests.](https://docs.github.com/ja/github/writing-on-github/working-with-advanced-formatting/attaching-files)
 
-Gyazo はサービスの性質上、それでも気軽に URL で何かを共有したいといったユースケースに特化しているため、比較対象にはそぐわなと考え直しました。
+Gyazo はサービスの性質上、それでも気軽に URL で何かを共有したいといったユースケースに特化しているため、比較対象にはそぐわないなと考え直しました。
 
 このような背景からセキュリティ要件の高いファイルを安全に参照できるようにストレージ先に GoogleDrive を選択できるように実装することにしました。
 
@@ -317,14 +321,19 @@ Drive 側の手順としては、GCP のサービスアカウントを作成し�
 ただ何も考えずに `await Promise.all()` で回してしまうとレギュレーションに引っかかってしまいます。
 そこで 1 秒間に n 回のように指定できないかと模索していたところ、ステキな記事と巡り会えました。
 
-[Promise.all で同時に実行される数を制限したい](https://zenn.dev/tsugitta/articles/concurrency-lock)
+<!-- [Promise.all で同時に実行される数を制限したい](https://zenn.dev/tsugitta/articles/concurrency-lock) -->
+
+https://zenn.dev/tsugitta/articles/concurrency-lock
 
 まさにやりたかったこと実装のスニペットでした。
+
 [@tsugitta](https://zenn.dev/tsugitta) さんに感謝しつつ少しリファクタしたものを実装しました。
 
 Notion API のリクエスト制限は [@CatNose](https://zenn.dev/catnose99) さんのこちらの記事もおすすめです
 
-[Notion API の Limit（リクエスト制限）で気になったことまとめ](https://zenn.dev/catnose99/articles/ab3afcb4338cbe)
+<!-- [Notion API の Limit（リクエスト制限）で気になったことまとめ](https://zenn.dev/catnose99/articles/ab3afcb4338cbe) -->
+
+https://zenn.dev/catnose99/articles/ab3afcb4338cbe
 
 ## md ファイルから手動でのインポートする際のあれこれ
 
