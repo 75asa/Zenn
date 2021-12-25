@@ -11,6 +11,9 @@ published: true
 この記事は [Slack Advent Calendar 2021](https://qiita.com/advent-calendar/2021/slack) 12/8 のエントリーです。
 最近 SlackApp を開発した際に便利だった jsx-slack のお話です。
 
+https://qiita.com/advent-calendar/2021/slack
+
+
 # [Slack Block Kit](https://api.slack.com/block-kit) とは
 
 SlackApp（bot）開発で利用できるリッチなビューレイアウトです
@@ -20,6 +23,8 @@ SlackApp（bot）開発で利用できるリッチなビューレイアウトで
 実装前に見た目をざっくり構成したかったり、色々な Block を使って遊んでみたい場合はとても便利なのでぜひ利用してみてください
 
 FYI: [Block Kit Builder を使ってインタラクティブな Slack アプリをプロトタイピングしよう](https://qiita.com/seratch/items/628751be65de9eb23a80)
+
+https://qiita.com/seratch/items/628751be65de9eb23a80
 
 # 辛いことろ
 
@@ -31,11 +36,18 @@ Node.js を利用している場合は、オフィシャルで bolt.js という
 # jsx-slack とは
 
 そこで [jsx-slack](https://github.com/yhatt/jsx-slack) の登場です。
+
+https://github.com/yhatt/jsx-slack
+
 jsx-slack とは JSON で記述する Block Kit を React の JSX のように記述できるライブラリです。
 もともと speee という会社のエンジニアである yhatt 氏を筆頭に作成されたものでした。
 現在は yhatt 氏のリポジトリに譲与され、新しい Block Kit が発表されると jsx-slack も比較的早目にサポートされています。
 最近だと Slack が発表した次世代プラットフォーム向けの Slack CLI で利用できる [Deno ランタイムをサポート](https://deno.com/blog/slack)したりりしてます。
+
+https://deno.com/blog/slack
+
 では簡単なレイアウトを生 JSON で記載した場合を見てみましょう。
+
 
 # 記述例
 
@@ -110,6 +122,8 @@ Block Kit をよく使う人は各オブジェクトの `type` をみて大体�
 また 一般的によく使用される HTML タグがサポートされているため、直感的にビューを記述できます。
 実際にサポートされているタグは [REPL](https://jsx-slack.netlify.app/) や `*.jsx`, `*.tsx` の拡張子で記述するとエラーが表示され、すぐに確認できます。
 
+https://jsx-slack.netlify.app/
+
 ```jsx
 <Blocks>
   <Section>
@@ -138,6 +152,8 @@ Block Kit をよく使う人は各オブジェクトの `type` をみて大体�
 ## プロジェクトで実際に使用しているコード
 
 [notion-database-crawler](https://github.com/75asa/notion-database-crawler) では Notion のプロパティをパースし、各プロパティタイプ別に Block Kit を生成しています。
+
+https://github.com/75asa/notion-database-crawler
 
 ```tsx
 import { Prisma } from ".prisma/client";
