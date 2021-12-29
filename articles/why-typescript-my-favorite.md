@@ -8,4 +8,6 @@ published: false
 
 # TypeScript とは
 
+# JavaScript との違い
+
 # なぜ推すか
