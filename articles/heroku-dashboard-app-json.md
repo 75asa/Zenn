@@ -3,7 +3,7 @@ title: "Heroku Dashboard から app.json を即座に出力する"
 emoji: "👾"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["heroku"]
-published: false
+published: true
 ---
 
 # TL;DR
