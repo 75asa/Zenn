@@ -1,6 +1,6 @@
 ---
 title: "Heroku Dashboard から app.json を即座に出力する"
-emoji: "👏"
+emoji: "👾"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["heroku"]
 published: false
@@ -9,7 +9,7 @@ published: false
 # TL;DR
 
 1. `https://dashboard.heroku.com/apps/${your-app-name}` にいく
-2. suffix に `/app-json` とつける
+2. suffix に `/app-json` とつける e.g. `https://dashboard.heroku.com/apps/${your-app-name}/app-json`
 3. 以下のような画面が出てくる
 
    ![/app-json](https://i.gyazo.com/2bb97fe2f8bdd032308de4595ba0178f.png)
@@ -24,8 +24,11 @@ published: false
 もともと全てスクラッチで `app.json` を作成したり、一度作成したプロジェクトのものをコピー&ペースト&修正したりしていた。
 そんなとき、弊社の技術顧問が `/app-json` てダッシュボードの URL につけると` app.json` すぐ作れますよ。と耳寄り情報を享受した。
 ちなみに GUI の導線は Review App のどこかからでしか辿り着けないらしく、謎（設定からは辿り着けない）
+もし、わかる方いれば教えて欲しいです。
 
 # FYI
+
+https://qiita.com/mikakane/items/f24a691b6d7360907870
 
 https://devcenter.heroku.com/ja/articles/app-json-schema
 
