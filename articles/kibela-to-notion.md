@@ -9,7 +9,7 @@ published: true
 # はじめに
 
 これは先日弊社の社内 Wiki のお引っ越しをした際に体験した様々なうんちくを書き残したものです。
-Kibela -> Notion への移行ですが、Markdown で Notion にインポートできれば他のプラットフォームでも活きることがあるかも知れません。
+Kibela から Notion への移行ですが、Markdown で Notion にインポートできれば他のプラットフォームでも活きることがあるかも知れません。
 
 # 沿革
 
@@ -29,7 +29,7 @@ Dropbox Paper 導入初期の反応はおおむね良く、純粋なテキスト
 
 そんなときに Notion の噂を聞きつけました。
 気になってみて調べてみると Dropbox Paper と同じような同時編集機能があり、またゲスト機能も無料で搭載されている。
-また価格も割とリーズナブルで、 Trello やスプレッドシートのような使い方も出来るということです。豊富な機能に惹かれチームの一部で導入してみることにしました。
+そして価格も割とリーズナブルで、 Trello やスプレッドシートのような使い方も出来るということです。豊富な機能に惹かれチームの一部で導入してみることにしました。
 実際に利用してみてまず感じたことは、文章としての書きごこちは圧倒的に Kibela や Dropbox Paper に軍杯があがるのですが、コンテンツを自由に柔軟に組み合わせたりカスタマイズできる点が非常に魅力的で運用しやすそうということです。
 
 チームでの好評から全社的にもスケールし、まずは社内のポータルをこれまで運用してきた Google Site から Notion に移行しました。
@@ -268,7 +268,11 @@ ACL Bucket Policy は以下のようにしました。
 
 これが例えばサークルやコミュニティの Wiki であれば比較的許されるかもしれないですが、案件情報やエンドユーザが外部に公開されると思ってアップロードしたファイルではないため、そういった面で軽率でした。
 
-個人的には、実装初期の方では GitHub や Gyazo も同様のファイル管理をしているじゃあないかと思ったのですが、GitHub は公式に注意勧告をしています。
+個人的には、実装初期の方では
+
+> GitHub や Gyazo も同様のファイル管理をしているじゃあないか
+
+と思ったのですが、以下のように GitHub は公式に注意勧告をしていました。
 
 > Warning: If you add an image or video to a pull request or issue comment, anyone can view the anonymized URL without authentication, even if the pull request is in a private repository. To keep sensitive media files private, serve them from a private network or server that requires authentication. For more information on anonymized URLs see "About anonymized URLs".
 
@@ -318,12 +322,12 @@ Drive 側の手順としては、GCP のサービスアカウントを作成し�
 
 これは YAML ヘッダーの属性値で Notion ページを更新する処理（Tag）を非同期にした際に遭遇しました。
 `$ yarn start:TAG -m 18` とするとローカルにある Kibela アーカイブファイルの 0〜18 までの notes/_ にある _.md を Notion ページと照合し更新していくのですが、プロトでは直列で記述していたため実行時間がネックでした。
-ただ何も考えずに `await Promise.all()` で回してしまうとレギュレーションに引っかかってしまいます。
-そこで 1 秒間に n 回のように指定できないかと模索していたところ、ステキな記事と巡り会えました。
+ただ何も考えずに `await Promise.all()` で回してしまうと、レギュレーションに引っかかってしまいます。
+そこで 1 秒間に n 回のように指定できないかと模索していたところ、以下のステキな記事と巡り会えました。
 
 https://zenn.dev/tsugitta/articles/concurrency-lock
 
-まさにやりたかったこと実装のスニペットでした。
+まさにやりたかったことで、実装のスニペットでした。
 
 [@tsugitta](https://zenn.dev/tsugitta) さんに感謝しつつ少しリファクタしたものを実装しました。
 
@@ -398,7 +402,7 @@ Kibela は他のマークダウンと同様に HTML をサポートしていま�
 https://github.com/75asa/kibela-to-notion
 
 制作期間としては 僕一人で 7 月の終わりから実装着手し、10 月の頭に GA したので 2.5 ヶ月ほどでしょうか
-GitHub の Commit-アクティビティ を振り返ると最初ガッツリコミットしてプロトを作成し、その後 FB でちょこちょとリファクタした感じを思い出しました。
+GitHub の `Commit-アクティビティ` を振り返ると最初ガッツリコミットしてプロトを作成し、その後 FB でちょこちょとリファクタした感じを思い出しました。
 
 [![kibela-to-notion: Commits](https://i.gyazo.com/d9b3466a10bd11ce5913c3236b284ee6.png)](https://github.com/75asa/kibela-to-notion/graphs/commit-activity)
 
@@ -407,6 +411,6 @@ Issue, PR, Fork はお気軽にどうぞ。
 
 # まとめ
 
-今回の Kibela -> Notion の移行は会社としては「いつかやらないとね〜、だけど人手が足りない」「ちゃんとインポートするには手を入れないとな」みたいな温度感でした。
+今回の Kibela から Notion の移行は会社としては「いつかやらないとね〜、だけど人手が足りない」「ちゃんとインポートするには手を入れないとな」みたいな温度感でした。
 しかし、日報を書くだけのツールになってしまってる Kibela にもライセンス代はもちろん中々かかっていたので、管理部としては早く統合したいという気持ちが強かったです。
 此度のプロジェクトで節約に大いに貢献できたのでとても嬉しいです。

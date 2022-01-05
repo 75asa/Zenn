@@ -42,7 +42,7 @@ https://github.com/yhatt/jsx-slack
 jsx-slack とは JSON で記述する Block Kit を React の JSX のように記述できるライブラリです。
 もともと speee という会社のエンジニアである yhatt 氏を筆頭に作成されたものでした。
 現在は yhatt 氏のリポジトリに譲与され、新しい Block Kit が発表されると jsx-slack も比較的早目にサポートされています。
-最近だと Slack が発表した次世代プラットフォーム向けの Slack CLI で利用できる [Deno ランタイムをサポート](https://deno.com/blog/slack)したりりしてます。
+また Slack が発表した次世代プラットフォーム向けの Slack CLI で利用できる [Deno ランタイムをサポート](https://deno.com/blog/slack)もあるようです。
 
 https://deno.com/blog/slack
 
@@ -245,7 +245,7 @@ export const MultiSelectProperty = ({
 
 # まとめ
 
-_JSON で冗長な Block Kit に辟易しているほうははぜひお試しを！_
+_JSON で冗長な Block Kit に辟易している皆さん。ぜひお試しを！_
 
 # FYI
 
