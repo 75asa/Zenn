@@ -33,3 +33,5 @@ https://qiita.com/mikakane/items/f24a691b6d7360907870
 https://devcenter.heroku.com/ja/articles/app-json-schema
 
 https://devcenter.heroku.com/ja/articles/heroku-button
+
+https://devcenter.heroku.com/ja/articles/github-integration-review-apps
