@@ -54,16 +54,16 @@ published: false
 
 - NestJS の `--watch` はよく知られてるけど `--debug` は文献がなかなかないが実は有益
     - というかいくら探しても公式のドキュメントが見つからない（どなたか見つけたら 🙏🏻）
-- nodemon や ts-node-dev などは入れずに `--watch` で代用できるのは良い。
-    - nodemon.json などを書きたくない。
+- nodemon や ts-node-dev などは入れずに `--watch` で代用できるのは良い
+    - nodemon.json などを書きたくない
 
 ## Context
 
 デバッグは原始的な console デバッグもいいけど、規模が増えてきたり処理の流れを追いたい際に重用するよね。
 
-個人的には、名だたる OSS なども `.idea` や `.vscode/` は git 管理対象にしているとこも多くみるのでプロジェクトで入れちゃっていいと思う。
+個人的には、名だたる OSS なども `.idea` や `.vscode/` は Git 管理対象にしているとこも多くみるのでプロジェクトで入れちゃっていいと思う。
 
-### settings.json を git 管理対象にするのは注意
+### settings.json を Git 管理対象にするのは注意
 
 ただ、 `.vscode/settings.json` だけは少し注意が必要。
 
