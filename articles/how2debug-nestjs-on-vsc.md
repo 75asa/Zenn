@@ -13,7 +13,7 @@ published: false
 1. `$ mkdir .vscode` でプロジェクトルートに `.vscode/` を作る
 2. `$ touch .vscode/launch.json` でデバッグするために launch ファイルを作る
 3. `package.json` に 任意の名前（ここでは `start:debug`）で `nest start --watch --debug` の npm scripts を追加
-4. launch.json に以下を記述
+4. launch.json に以下を記述（yarn 派は適宜変えてください）
 
 ```json
 {
@@ -47,7 +47,8 @@ published: false
 
 デバッグメニューに変数の中身やコールスタックが表示されていたらオッケー。
 
-<!-- TODO: 実際にデバッグしてる画像を貼る -->
+![Debugging on VSCode](https://i.gyazo.com/2bc5a9011e4ee2b90d4436b9792564ad.png)
+
 
 
 ## ここがいい
