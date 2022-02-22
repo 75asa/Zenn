@@ -12,8 +12,8 @@ published: true
 
 1. `$ mkdir .vscode` でプロジェクトルートに `.vscode/` を作る
 2. `$ touch .vscode/launch.json` でデバッグするために launch ファイルを作る
-3. `package.json` に 任意の名前（ここでは `start:debug`）で `nest start --watch --debug` の npm scripts を追加
-4. launch.json に以下を記述（yarn 派は適宜変えてください）
+3. `package.json` に 任意の名前（ここでは `start:watch`）で `nest start --watch` の npm scripts を追加
+4. launch.json に以下を記述（npm 派は適宜変えてください）
 
 ```json
 {
@@ -21,13 +21,13 @@ published: true
   "configurations": [
     {
       "type": "pwa-node",
-      "name": "Launch via NPM",
+      "name": "Launch via yarn",
       "request": "launch",
       "runtimeArgs": [
           "run",
-          "start:debug"
+          "start:watch"
       ],
-      "runtimeExecutable": "npm",
+      "runtimeExecutable": "yarn",
       "skipFiles": [
           "<node_internals>/**"
       ],
@@ -53,15 +53,12 @@ published: true
 
 ## ここがいい
 
-- NestJS の `--watch` はよく知られてるけど `--debug` は文献がなかなかないが実は有益
-    - というか、いくら探しても公式のドキュメントが見つからない
-    - どなたか見つけたら教えていただきたいです 🙏🏻
 - nodemon や ts-node-dev などは入れずに `--watch` で代用できるのは良い
-    - nodemon.json などを書きたくない
+- nodemon.json などを書きたくない、楽したい
 
 ## Context
 
-デバッグはプリミティブな console デバッグもいいけど、規模が増えてきたり処理の流れを追いたい際に重用します。
+デバッグはプリミティブな console デバッグもいいけど、規模が大きくなったりコールスタック等から処理の流れを追いたい際に重用します。
 
 ## 余談
 
@@ -77,13 +74,13 @@ published: true
 
 例えば、僕は Peacook というエディタの枠を色付けするプラグインを使っています。
 
+https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock
+
 これは、僕が普段から複数の VSCode プロジェクトを立ち上げているので、切り替えた際にどのプロジェクトかをプロジェクト名で識別するよりかは直感的に色で識別するためです。
 
-まあ、こんな理由から使っているのだけど
+しかし、 Peacook はワークスペース（プロジェクト）ごとに `settings.json` に任意の色コードを保存します。
 
-Peacook はワークスペース（プロジェクト）ごとに `settings.json` に任意の色コードを保存します。
-
-そのため、仮に他にも Peacook を使っているユーザがいると、色コードが競合してし卯からです。
+そのため、仮に他に Peacook を使っているユーザがいると、色コードが競合してしまいます。
 
 ## FYI
 
