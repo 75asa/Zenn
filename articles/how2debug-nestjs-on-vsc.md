@@ -1,9 +1,9 @@
 ---
 title: "VSCode で NestJS をデバッグする"
-emoji: "🎃"
+emoji: "🐛"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["NestJS", "VSCode", "Debug"]
-published: false
+published: true
 ---
 
 # VSCode で NestJS をデバッグする
@@ -12,8 +12,8 @@ published: false
 
 1. `$ mkdir .vscode` でプロジェクトルートに `.vscode/` を作る
 2. `$ touch .vscode/launch.json` でデバッグするために launch ファイルを作る
-3. `package.json` に 任意の名前（ここでは `start:debug`）で `nest start --watch --debug` の npm scripts を追加
-4. launch.json に以下を記述
+3. `package.json` に 任意の名前（ここでは `start:watch`）で `nest start --watch` の npm scripts を追加
+4. launch.json に以下を記述（npm 派は適宜変えてください）
 
 ```json
 {
@@ -21,13 +21,13 @@ published: false
   "configurations": [
     {
       "type": "pwa-node",
-      "name": "Launch via NPM",
+      "name": "Launch via yarn",
       "request": "launch",
       "runtimeArgs": [
           "run",
-          "start:debug"
+          "start:watch"
       ],
-      "runtimeExecutable": "npm",
+      "runtimeExecutable": "yarn",
       "skipFiles": [
           "<node_internals>/**"
       ],
@@ -43,44 +43,51 @@ published: false
 
 ## 実際に使ってる様子
 
-こんな感じで起動できる。
+こんな感じで起動できます。
 
-デバッグメニューに変数の中身やコールスタックが表示されていたらオッケー。
+デバッグメニューに変数の中身やコールスタックが表示されていたらオッケーです。
 
-<!-- TODO: 実際にデバッグしてる画像を貼る -->
+![Debugging on VSCode](https://i.gyazo.com/2bc5a9011e4ee2b90d4436b9792564ad.png)
+
 
 
 ## ここがいい
 
-- NestJS の `--watch` はよく知られてるけど `--debug` は文献がなかなかないが実は有益
-    - というかいくら探しても公式のドキュメントが見つからない（どなたか見つけたら 🙏🏻）
 - nodemon や ts-node-dev などは入れずに `--watch` で代用できるのは良い
-    - nodemon.json などを書きたくない
+- nodemon.json などを書きたくない、楽したい
 
 ## Context
 
-デバッグは原始的な console デバッグもいいけど、規模が増えてきたり処理の流れを追いたい際に重用するよね。
+デバッグはプリミティブな console デバッグもいいけど、規模が大きくなったりコールスタック等から処理の流れを追いたい際に重用します。
 
-個人的には、名だたる OSS なども `.idea` や `.vscode/` は Git 管理対象にしているとこも多くみるのでプロジェクトで入れちゃっていいと思う。
+## 余談
 
+### `.vscode/` や `./idea` を Git 管理すべきか
+
+個人的には、名だたる OSS なども `.idea` や `.vscode/` は Git 管理対象にしているとこも多くみるのでプロジェクトで入れちゃっていいと思います。
+
+
+## Note
 ### settings.json を Git 管理対象にするのは注意
 
-ただ、 `.vscode/settings.json` だけは少し注意が必要。
+ただ、 `.vscode/settings.json` だけは少し注意が必要です。
 
-例えば、僕は Peacook というエディタの枠を色付けするプラグインを使ってる。
+例えば、僕は Peacook というエディタの枠を色付けするプラグインを使っています。
 
-これは、僕が普段から複数の VSCode プロジェクトを立ち上げているので、切り替えた際にどのプロジェクトかをプロジェクト名で識別するよりかは直感的に色で識別するためである。
+https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock
 
-まあ、こんな理由から使っているのだけど
+これは、僕が普段から複数の VSCode プロジェクトを立ち上げているので、切り替えた際にどのプロジェクトかをプロジェクト名で識別するよりかは直感的に色で識別するためです。
 
-Peacook はワークスペース（プロジェクト）ごとに `settings.json` に任意の色コードを保存する。
+しかし、 Peacook はワークスペース（プロジェクト）ごとに `settings.json` に任意の色コードを保存します。
 
-そのため、仮に他にも Peacook を使っているユーザがいると、色コードが競合してしまう。
+そのため、仮に他に Peacook を使っているユーザがいると、色コードが競合してしまいます。
+
+現状こうした背景を考慮して、 `.vscode/launch.json` だけを Git 管理対象とするのがベターな気がしています。
 
 ## FYI
 
-[TypeScript +NestJSをプロジェクトで導入したら素晴らしかった件](https://zenn.dev/naonao70/articles/a91d8835f1832b)
+https://zenn.dev/naonao70/articles/a91d8835f1832b
 
-[Cannot debug nest js application in VSCode](https://stackoverflow.com/questions/66535341/cannot-debug-nest-js-application-in-vscode)
+https://stackoverflow.com/questions/66535341/cannot-debug-nest-js-application-in-vscode
 
-[Debug Node.js Apps using Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-debugging)
+https://code.visualstudio.com/docs/nodejs/nodejs-debugging
