@@ -82,6 +82,8 @@ https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock
 
 そのため、仮に他に Peacook を使っているユーザがいると、色コードが競合してしまいます。
 
+現状こうした背景を考慮して、 `.vscode/launch.json` だけを Git 管理対象とするのがベターな気がしています。
+
 ## FYI
 
 https://zenn.dev/naonao70/articles/a91d8835f1832b
