@@ -10,12 +10,22 @@ published: false
 
 ## 前提
 
+### git remote
+
 ローカルの git remote に Heroku URL が設定されていることとします。
 `$ git remote -v` と入力後に `${YOUR_HEROKU_REMOTE_NAME} https://git.heroku.com/{$YOUR_APP_NAME}.git (fetch)` があることを確認してください。
+筆者は `git remote` に `heroku-prd` の名称で heroku remote を追加しています。
+
+### Heroku CLI
 
 Heroku CLI はインストール済みのものとします。
 
 https://devcenter.heroku.com/ja/articles/heroku-cli
+
+### Shell
+
+筆者は fish を使用しているため、そのほかのシェル e.g. bash or zsh でコマンドを打つ際は適宜変更してください。
+e.g. `$ curl -o latest.dump (heroku pg:backups public-url --remote heroku-prd)` -> `$ curl -o latest.dump $(heroku pg:backups public-url --remote heroku-prd)`
 
 # 手順
 
@@ -73,6 +83,8 @@ $ docker exec -i postgres-notion-database-crawler pg_restore --verbose --clean -
 
 `--no-acl`
 
+アクセス権限（grant/revokeコマンド）のリストアを行いません。
+
 `--no-owner`
 
 オブジェクトの所有権の復元を省略
@@ -80,6 +92,8 @@ $ docker exec -i postgres-notion-database-crawler pg_restore --verbose --clean -
 `-d`
 
 データを指定
+
+FYI: https://www.postgresql.jp/docs/9.2/app-pgrestore.html
 
 ### 完了すると
 
