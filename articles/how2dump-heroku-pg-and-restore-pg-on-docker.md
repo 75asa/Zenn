@@ -10,9 +10,9 @@ published: false
 
 ## 前提
 
-### git remote
+### Git remote
 
-ローカルの git remote に Heroku URL が設定されていることとします。
+ローカルの Git remote に Heroku URL が設定されていることとします。
 `$ git remote -v` と入力後に `${YOUR_HEROKU_REMOTE_NAME} https://git.heroku.com/{$YOUR_APP_NAME}.git (fetch)` があることを確認してください。
 筆者は `git remote` に `heroku-prd` の名称で heroku remote を追加しています。
 
@@ -27,6 +27,8 @@ https://devcenter.heroku.com/ja/articles/heroku-cli
 筆者は fish を使用しているため、そのほかのシェル e.g. bash or zsh でコマンドを打つ際は適宜変更してください。
 e.g. `$ curl -o latest.dump (heroku pg:backups public-url --remote heroku-prd)` -> `$ curl -o latest.dump $(heroku pg:backups public-url --remote heroku-prd)`
 
+https://fishshell.com/
+
 # 手順
 
 ## CLI で Heroku のデータをバックアップする
@@ -37,7 +39,7 @@ e.g. `$ curl -o latest.dump (heroku pg:backups public-url --remote heroku-prd)` 
 $ heroku pg:backups:capture --remote heroku-prd
 ```
 
-Heroku の公式ガイドがわかりやすく記載されているのでオプションなど気になった方はそちらを参考にして下さい。
+Heroku の公式ガイドがわかりやすく記載されているのでオプションなど気になったかたはそちらを参考にしてください。
 
 https://devcenter.heroku.com/ja/articles/heroku-postgres-backups
 
@@ -49,7 +51,7 @@ https://devcenter.heroku.com/ja/articles/heroku-postgres-backups
 $ curl -o latest.dump (heroku pg:backups public-url --remote heroku-prd)
 ```
 
-公開 URL って推測されたりセキュリティ的に危ないのでは？と思われる方もいると思います。
+公開 URL って推測されたりセキュリティ的に危ないのでは？　と思われる方もいると思います。
 Heroku 公式によると、推測は困難かつ 60min 後に URL の公開が終了するということです。
 
 FYI: [バックアップをダウンロードする](https://devcenter.heroku.com/ja/articles/heroku-postgres-backups#downloading-your-backups)
@@ -83,7 +85,7 @@ $ docker exec -i postgres-notion-database-crawler pg_restore --verbose --clean -
 
 `--no-acl`
 
-アクセス権限（grant/revokeコマンド）のリストアを行いません。
+アクセス権限（grant/revoke コマンド）のリストアを行いません。
 
 `--no-owner`
 
@@ -110,3 +112,5 @@ https://devcenter.heroku.com/ja/articles/heroku-postgres-import-export
 https://qiita.com/TongTheDopeness/items/06fb5026b51459986f2e
 
 https://fullstacklife.net/database/postgresqlpg-backup-and-restore/
+
+https://fishshell.com/
