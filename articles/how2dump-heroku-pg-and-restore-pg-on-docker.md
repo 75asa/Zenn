@@ -25,7 +25,7 @@ https://devcenter.heroku.com/ja/articles/heroku-cli
 ### Shell
 
 筆者は fish を使用しているため、そのほかのシェル e.g. bash or zsh でコマンドを打つ際は適宜変更してください。
-e.g. `$ curl -o latest.dump (heroku pg:backups public-url --remote heroku-prd)` -> `$ curl -o latest.dump $(heroku pg:backups public-url --remote heroku-prd)`
+e.g. `$ curl -o latest.dump (heroku pg:backups public-url --remote heroku-prd)` → `$ curl -o latest.dump $(heroku pg:backups public-url --remote heroku-prd)`
 
 https://fishshell.com/
 

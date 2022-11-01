@@ -13,10 +13,10 @@ published: true
 
 # TL;DR
 
-- 原因分析のためにコマンドの末尾に `--debug` をつけましょう。
+- 原因分析のためにコマンドの末尾に `--debug` をつけましょう
   - e.g. `$ firebase init hosting:github --debug`
 - 404 error が返却されている場合 org に Firebase CLI の権限が Grant されていないので Grant しましょう
-- https://github.com/settings/installations の `Authorized OAuth Apps` から Firebase CLI があるか確認しましょう。
+- https://github.com/settings/installations の `Authorized OAuth Apps` から Firebase CLI があるか確認しましょう
 - 以下の画像のように x と表示されている場合 Grant を選択し管理者に Approve してもらうか管理者自身が Grant すれば OK です。
   ![GitHub Organization Access](https://i.gyazo.com/44a71c7a9c4644767aee0095de06a647.png)
 
