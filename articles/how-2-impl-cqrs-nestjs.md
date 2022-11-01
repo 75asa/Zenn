@@ -14,4 +14,4 @@ https://docs.microsoft.com/ja-jp/dotnet/architecture/microservices/microservice-
 
 
 # NestJS で CQRS を実装する
-
+https://github.com/firebase/firebase-tools/issues/2763
