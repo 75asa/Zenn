@@ -30,6 +30,7 @@ https://github.com/marketplace/actions/deploy-to-firebase-hosting
 # Note
 
 - Org の Integrations ではなく個人アカウントの Integration から Grant する
+- どうしても Org に Grant できない場合はカスタムセットアップで代替えできるようです（FYI: https://github.com/FirebaseExtended/action-hosting-deploy/blob/main/docs/service-account.md）
 
 # FYI
 
