@@ -1,5 +1,5 @@
 ---
-title: "`firebase init hosting:github` から user/repo を入力しても CLI がうんともすんとも言わないとき"
+title: "firebase init hosting:github から user/repo を入力しても CLI がうんともすんとも言わないとき"
 emoji: "🐕"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["firebase", "github"]
