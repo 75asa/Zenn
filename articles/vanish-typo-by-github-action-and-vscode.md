@@ -3,7 +3,7 @@ title: "VSCode と GitHub Action を使って typo を滅する"
 emoji: "😊"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["typo", "cspell", "github", "action", "vscode"]
-published: false
+published: true
 ---
 
 ## PR のレビューで typo 指摘するのめんどくさくないですか？
