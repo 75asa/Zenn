@@ -11,7 +11,7 @@ published: false
 筆者はコードレビューをする際に、 typo を指摘するのがずっとめんどくさいと思ってました。
 そこで、CSpell の [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) を普段使っている VSCode に入れています。
 これで自分の typo は防げていたのですが、チーム開発では個人の努力だけではどうにもなりません。
-また、チーム規模が大きくなるにつれてコントロールできず typo の波線がずっと表示されるなんてこともしばしば...。
+また、チーム規模が大きくなるにつれてコントロールできず typo の波線がずっと表示されるなんてこともしばしば。..。
 そこで今回は以下のような仕組み化で解決するようにしました。
 
 1. CI に typo 検知のワークフローを入れる
@@ -21,7 +21,7 @@ published: false
 
 ## VSCode Extension の導入
 
-先ずは VSCode の拡張機能である Code Spell Checker を入れます。
+まずは VSCode の拡張機能である Code Spell Checker を入れます。
 
 https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
 
@@ -97,7 +97,7 @@ module.exports = {
 ```
 
 コメントにもあるように辞書ファイルを設定しています。
-今回は一つの `./.cspell/words.txt` だけですが、複数の辞書ファイルを設定することも可能です。
+今回は 1 つの `./.cspell/words.txt` だけですが、複数の辞書ファイルを設定することも可能です。
 
 以下ポイントだけ押さえておきます。
 
@@ -128,7 +128,7 @@ module.exports = {
 今回だと `[setup, stepup, setula, setups, setout]` です。
 
 これで npm script でタイポを検知できるようになりました。
-GitHub Actions で検知するのが金銭的にしんどい場合であれば husky などでカバーするのお勧めです。
+GitHub Actions を使わずに husky を使ってカバーするのもお勧めです。
 以下の記事で詳しく解説されています。
 
 https://zenn.dev/luvmini511/articles/ade1f0e4b64770
@@ -164,8 +164,9 @@ VSCode で気軽に共通の辞書ファイルへの登録ができるように 
 ## GitHub Actions での cspell の設定
 
 最後は、 GitHub Actions を使って CI でタイポを検知する設定を行います。
-`$ mkdir -p .github/workflows` で `.github/workflows` ディレクトリを作成し、`$ touch .github/workflows/spell-check.yaml` で GitHub Actions の設定ファイルを作成します。
-また、 typo を検知した際に reviewdog でファイルにコメントを残すようにしています。
+`$ mkdir -p .github/workflows` と入力し `.github/workflows` ディレクトリを作成します。
+次に `$ touch .github/workflows/spell-check.yaml` で GitHub Actions の設定ファイルを作成します。
+今回は typo を検知した際に reviewdog でファイルにコメントを残すようにしています。
 reviewdog の詳細は割愛しますが、以下の記事が参考になります。
 
 https://zenn.dev/peraichi_blog/articles/01fy360dgteynbfv5tj3q6smv5
@@ -173,7 +174,7 @@ https://zenn.dev/peraichi_blog/articles/01fy360dgteynbfv5tj3q6smv5
 ### GitHub Actions の設定
 
 この設定では、コミットの修正範囲のファイルのみに対象を絞っています。
-こうすることで、既存プロジェクトに徐々に導入することができます。
+こうすることで、既存プロジェクトに徐々に導入できます。
 
 ```yaml
 name: spell-check
@@ -227,7 +228,7 @@ https://github.com/75asa/cSpell-template/pull/3
 
 ## まとめ
 
-コードレビューで typo を指摘するのがめんどくさい方、またはすでに typo だらけで徐々に改善したいと思っている方におすすめです。
+コードレビューで typo を指摘するのがめんどくさい方、またはすでに typo だらけで徐々に改善したいと思っているほうにおすすめです。
 
 ## FYI
 
