@@ -43,7 +43,11 @@ Auth0 では Users Management API が提供されているため、 Azure AD の
 
 そこで色々と調査をすると、 Auth0 Action を使って `group` を取得できるという記事を見つけました。
 
+https://dev.classmethod.jp/articles/some-attributes-not-accessible-in-actions/
+
 https://community.auth0.com/t/adding-a-rule-to-return-azure-ad-groups-for-a-user-logging-in/56835
+
+https://auth0.com/docs/customize/actions
 
 そこでカスタム属性を Action の引数から探すことにしました。
 しかし、いくら探しても見つかりません。
@@ -81,3 +85,6 @@ https://community.auth0.com/t/connect-to-azure-ad-using-an-oidc-enterprise-conne
 https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/azure-active-directory/v2
 
 https://community.auth0.com/t/connect-to-azure-ad-using-an-oidc-enterprise-connection/55681
+
+
+https://auth0.com/docs/customize/actions
