@@ -5,6 +5,36 @@ __metadata:
   version: 6
   cacheKey: 8
 
+"@75asa/zenn@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@75asa/zenn@workspace:."
+  dependencies:
+    "@textlint-ja/textlint-rule-no-insert-dropping-sa": ^1.0.1
+    husky: ^5.0.0-alpha.6
+    md-to-pdf: ^5.1.0
+    textlint: ^11.6.3
+    textlint-filter-rule-comments: ^1.2.2
+    textlint-filter-rule-whitelist: ^2.0.0
+    textlint-rule-abbr-within-parentheses: ^1.0.2
+    textlint-rule-footnote-order: ^1.0.3
+    textlint-rule-general-novel-style-ja: ^1.3.0
+    textlint-rule-ja-hiragana-fukushi: ^1.2.0
+    textlint-rule-ja-hiragana-hojodoushi: ^1.0.4
+    textlint-rule-ja-hiragana-keishikimeishi: ^1.0.2
+    textlint-rule-ja-unnatural-alphabet: ^2.0.1
+    textlint-rule-ng-word: ^1.0.0
+    textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet: ^1.0.1
+    textlint-rule-period-in-list-item: ^0.3.2
+    textlint-rule-prefer-tari-tari: ^1.0.3
+    textlint-rule-preset-ja-spacing: ^2.0.2
+    textlint-rule-preset-ja-technical-writing: ^3.1.3
+    textlint-rule-preset-jtf-style: ^2.3.4
+    textlint-rule-prh: ^5.3.0
+    textlint-rule-spellcheck-tech-word: ^5.0.0
+    zenn-cli: latest
+  languageName: unknown
+  linkType: soft
+
 "@azu/format-text@npm:^1.0.1":
   version: 1.0.1
   resolution: "@azu/format-text@npm:1.0.1"
@@ -5346,36 +5376,6 @@ __metadata:
   checksum: 5cba0c4a382dad324a8d0f5bdf4f19c6118aaeb1e82221ad3ec66a9d7fcddd892e22f306854880af56ecc3d855585924a46963f8a2f14b45b3866b9b3ae4a13f
   languageName: node
   linkType: hard
-
-"zenn@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "zenn@workspace:."
-  dependencies:
-    "@textlint-ja/textlint-rule-no-insert-dropping-sa": ^1.0.1
-    husky: ^5.0.0-alpha.6
-    md-to-pdf: ^5.1.0
-    textlint: ^11.6.3
-    textlint-filter-rule-comments: ^1.2.2
-    textlint-filter-rule-whitelist: ^2.0.0
-    textlint-rule-abbr-within-parentheses: ^1.0.2
-    textlint-rule-footnote-order: ^1.0.3
-    textlint-rule-general-novel-style-ja: ^1.3.0
-    textlint-rule-ja-hiragana-fukushi: ^1.2.0
-    textlint-rule-ja-hiragana-hojodoushi: ^1.0.4
-    textlint-rule-ja-hiragana-keishikimeishi: ^1.0.2
-    textlint-rule-ja-unnatural-alphabet: ^2.0.1
-    textlint-rule-ng-word: ^1.0.0
-    textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet: ^1.0.1
-    textlint-rule-period-in-list-item: ^0.3.2
-    textlint-rule-prefer-tari-tari: ^1.0.3
-    textlint-rule-preset-ja-spacing: ^2.0.2
-    textlint-rule-preset-ja-technical-writing: ^3.1.3
-    textlint-rule-preset-jtf-style: ^2.3.4
-    textlint-rule-prh: ^5.3.0
-    textlint-rule-spellcheck-tech-word: ^5.0.0
-    zenn-cli: latest
-  languageName: unknown
-  linkType: soft
 
 "zlibjs@npm:^0.2.0":
   version: 0.2.0
