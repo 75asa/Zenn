@@ -11,7 +11,7 @@ published: true
 筆者はコードレビューをする際に、 typo を指摘するのがずっとめんどくさいと思ってました。
 そこで、CSpell の [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) を普段使っている VSCode に入れています。
 これで自分の typo は防げていたのですが、チーム開発では個人の努力だけではどうにもなりません。
-また、チーム規模が大きくなるにつれてコントロールできず typo の波線がずっと表示されるなんてこともしばしば。..。
+また、チーム規模が大きくなるにつれてコントロールできず typo がずっと表示されるなんてこともしばしば。..。
 そこで今回は以下のような仕組み化で解決するようにしました。
 
 1. CI に typo 検知のワークフローを入れる
