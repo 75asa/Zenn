@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/75asa/Zenn#readme",
   "dependencies": {
-    "zenn-cli": "latest"
+    "zenn-cli": "^0.1.141"
   },
   "devDependencies": {
     "@textlint-ja/textlint-rule-no-insert-dropping-sa": "^1.0.1",
