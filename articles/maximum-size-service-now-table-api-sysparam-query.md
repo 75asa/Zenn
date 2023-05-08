@@ -1,5 +1,5 @@
 ---
-title: "Service Now API の Table API で複数の sys_id を sysparm_query に入れてリクエストを送る際の最大許容数"
+title: "Service Now Table API で複数の sys_id を sysparm_query に入れてリクエストを送る際の最大許容数"
 emoji: "🍣"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["ServiceNow", "TableAPI"]
