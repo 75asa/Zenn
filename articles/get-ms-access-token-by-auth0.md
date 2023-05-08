@@ -1,9 +1,9 @@
 ---
 title: "Azure AD と Auth0 を使ってログインした際に Azure AD から Microsoft Graph API を使う"
-emoji: "😎"
+emoji: "🔑"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["auth0", "msgraphapi", "oidc", "azure", "microsoft"]
-published: false
+published: true
 ---
 
 ## 前提
@@ -126,9 +126,93 @@ https://auth0.com/docs/api/management/v2?_ga=2.224570586.138144054.1682643450-17
 
 Microsoft Graph API を使って、エンドユーザがサインインしているデバイス情報を取得してみましょう。
 
-## 試してみる
+oid は waad 経由で登録された Auth0 User のプロフィール項目にあります。
+MS 側で利用しているオリジンの ID です。
+token には 前述の MS 側の Access Token を利用してください。
+
+```shell
+curl -X GET \
+  'https://graph.microsoft.com/v1.0/users/${auth0-user-oid}/ownedDevices' \
+  --header 'Authorization: Bearer ${token}'
+```
+
+レスポンスのサンプルとしては以下のようなペイロードが返却されます。
+デバイス名やデバイス ID などが取得できます。
+ユースケースに応じて適宜利用してください。
+
+```json
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#directoryObjects",
+  "value": [
+    {
+      "@odata.type": "#microsoft.graph.device",
+      "id": "****",
+      "deletedDateTime": null,
+      "accountEnabled": true,
+      "approximateLastSignInDateTime": "2022-05-27T05:30:32Z",
+      "complianceExpirationDateTime": null,
+      "createdDateTime": "2022-05-11T09:06:17Z",
+      "deviceCategory": null,
+      "deviceId": "****",
+      "deviceMetadata": null,
+      "deviceOwnership": null,
+      "deviceVersion": 2,
+      "displayName": "****",
+      "domainName": null,
+      "enrollmentProfileName": null,
+      "enrollmentType": null,
+      "externalSourceName": null,
+      "isCompliant": null,
+      "isManaged": null,
+      "isRooted": null,
+      "managementType": null,
+      "manufacturer": null,
+      "mdmAppId": null,
+      "model": null,
+      "onPremisesLastSyncDateTime": null,
+      "onPremisesSyncEnabled": null,
+      "operatingSystem": "Windows",
+      "operatingSystemVersion": "****",
+      "physicalIds": ["****", "****", "****", "****"],
+      "profileType": "****",
+      "registrationDateTime": "2022-05-11T09:06:17Z",
+      "sourceType": null,
+      "systemLabels": [],
+      "trustType": "****",
+      "extensionAttributes": {
+        "extensionAttribute1": null,
+        "extensionAttribute2": null,
+        "extensionAttribute3": null,
+        "extensionAttribute4": null,
+        "extensionAttribute5": null,
+        "extensionAttribute6": null,
+        "extensionAttribute7": null,
+        "extensionAttribute8": null,
+        "extensionAttribute9": null,
+        "extensionAttribute10": null,
+        "extensionAttribute11": null,
+        "extensionAttribute12": null,
+        "extensionAttribute13": null,
+        "extensionAttribute14": null,
+        "extensionAttribute15": null
+      },
+      "alternativeSecurityIds": [
+        {
+          "type": 2,
+          "identityProvider": null,
+          "key": "***"
+        }
+      ]
+    }
+  ]
+}
+```
 
 ## まとめ
+
+ユースケースとしてはよくありそうですが筆者が探していた際は、日本語の記事が見つからなかったのでここに備忘録として残しました。
+個人的には Auth0 を使わずに MS Graph SDK や自前で実装するケースの方が多い気がしています。
+ただ Auth0 を経由することにより MS 以外の ID プロバイダを利用する際にも同じようなことができるので、 Google や Facebook などの ID プロバイダを利用する際にも参考になるかと思います。
 
 ## FYI
 
