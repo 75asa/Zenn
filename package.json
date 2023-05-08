@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Zenn Docs",
   "main": "./README.md",
-  
   "scripts": {
     "article": "zenn new:article",
     "book": "zenn new:book",
