@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Zenn Docs",
   "main": "./README.md",
+  
   "scripts": {
     "article": "zenn new:article",
     "book": "zenn new:book",
@@ -49,6 +50,5 @@
     "textlint-rule-preset-jtf-style": "^2.3.4",
     "textlint-rule-prh": "^5.3.0",
     "textlint-rule-spellcheck-tech-word": "^5.0.0"
-  },
-  "packageManager": "yarn@3.2.0"
+  }
 }
